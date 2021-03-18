@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 export default function App() {
   const [info, setInfo] = useState({});
   // const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
   const [errors, setErrors] = useState({});
-  let users = [];
   const onChange = e => {
     setInfo({ ...info, [e.target.name]: e.target.value });
-    console.log(info, "onchange");
   };
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = info.name;
+  });
+
   const onSubmit = e => {
     e.preventDefault();
-    users.push(info);
+    setUsers([...users, { ...info }]);
     console.log(info, "info onSubmit");
-    console.log(typeof setInfo);
     console.log(users, "users");
+    setInfo({});
   };
 
   return (
