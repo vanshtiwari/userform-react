@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Button from "@material-ui/core/Button";
 import "./style.css";
+import { FormControl } from "@material-ui/core";
 
 export default function App() {
   const [info, setInfo] = useState({});
@@ -25,9 +27,13 @@ export default function App() {
 
   return (
     <>
-      Hello
-      <br />
-      bro
+      <FormControl>
+        <InputLabel htmlFor="my-input">Email address</InputLabel>
+        <Input id="my-input" aria-describedby="my-helper-text" />
+        <FormHelperText id="my-helper-text">
+          We'll never share your email.
+        </FormHelperText>
+      </FormControl>
       <Form
         info={info}
         errors={errors}
